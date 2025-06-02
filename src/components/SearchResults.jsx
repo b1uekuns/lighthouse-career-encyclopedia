@@ -181,8 +181,11 @@ const UniversityCourseSection = () => {
 const SearchResults = ({ searchTerm, onSignUp, onSignIn, isAuthenticated = false }) => {
   const [activeTab, setActiveTab] = useState("job-description");
 
-  // Get job data for the current search term
-  const currentJobData = jobData[searchTerm.toLowerCase()];
+  // Normalize search term to always use "graphic designer"
+  const normalizedSearchTerm = searchTerm.toLowerCase().includes("graphic designer") ? "graphic designer" : searchTerm.toLowerCase();
+
+  // Get job data for the normalized search term
+  const currentJobData = jobData[normalizedSearchTerm];
 
   const tabs = [
     { id: "job-description", label: "Job description" },
@@ -220,7 +223,7 @@ const SearchResults = ({ searchTerm, onSignUp, onSignIn, isAuthenticated = false
             textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
           }}
         >
-          "{searchTerm}"
+          "{normalizedSearchTerm}"
         </h1>
       </div>
 

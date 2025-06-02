@@ -1,6 +1,6 @@
 export const jobData = {
-  "graphic designers": {
-    title: "Graphic Designers",
+  "graphic designer": {
+    title: "Graphic Designer",
     description: "Graphic designers create visual concepts, using computer software or by hand, to communicate ideas that inspire, inform, and captivate consumers.",
     averageSalary: "$45,000 - $75,000",
     education: "Bachelor's degree in graphic design or related field",

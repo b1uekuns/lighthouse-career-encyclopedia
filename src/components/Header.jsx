@@ -24,12 +24,12 @@ const Header = ({
     if (onSearch && localSearchTerm.trim()) {
       const trimmedTerm = localSearchTerm.toLowerCase().trim();
 
-      // Check if the search term is "graphic designers" or contains it
+      // Check if the search term is "graphic designer" or contains it
       if (trimmedTerm.includes("graphic designer")) {
         onSearch(trimmedTerm);
       } else {
         // For demo purposes, show an alert for invalid search terms
-        alert("Sorry, we currently only have data for 'graphic designers'. Please try searching for that keyword.");
+        alert("Sorry, we currently only have data for 'graphic designer'. Please try searching for that keyword.");
       }
     }
   };

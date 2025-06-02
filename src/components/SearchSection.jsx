@@ -15,7 +15,7 @@ const SearchSection = ({ onSearch }) => {
         onSearch(trimmedTerm);
       } else {
         // Show error for other search terms
-        setError("Sorry, we currently only have data for 'graphic designers'. Please try searching for that keyword.");
+        setError("Sorry, we currently only have data for 'graphic designer'. Please try searching for that keyword.");
       }
     }
   };
