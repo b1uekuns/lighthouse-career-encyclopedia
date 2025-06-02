@@ -263,7 +263,7 @@ const SignIn = ({ onBack, onSignUp }) => {
                   name="accountName"
                   value={formData.accountName}
                   onChange={handleInputChange}
-                  placeholder="email"
+                  placeholder="Email"
                   style={{
                     width: "100%",
                     padding: "1rem 1rem 1rem 3rem",
@@ -320,7 +320,7 @@ const SignIn = ({ onBack, onSignUp }) => {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  placeholder="password"
+                  placeholder="Password"
                   style={{
                     width: "100%",
                     padding: "1rem 1rem 1rem 3rem",
