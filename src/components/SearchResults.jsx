@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import UniversityCourseSection from "./UniversityCourseSection";
 import JobDescriptionSection from "./JobDescriptionSection";
 import CompaniesSection from "./CompaniesSection";
@@ -32,13 +32,16 @@ const SearchResults = ({
     currentCareer = "contractor";
   }
 
-  const tabs = [
-    { id: "job-description", label: "Job description" },
-    { id: "university-course", label: "University/Course" },
-    { id: "companies", label: "Companies" },
-    { id: "opportunities", label: "Opportunities" },
-    { id: "sharing", label: "Sharing" },
-  ];
+  const tabs = useMemo(
+    () => [
+      { id: "job-description", label: "Job description" },
+      { id: "university-course", label: "University/Course" },
+      { id: "companies", label: "Companies" },
+      { id: "opportunities", label: "Opportunities" },
+      { id: "sharing", label: "Sharing" },
+    ],
+    []
+  );
 
   useEffect(() => {
     const idx = tabs.findIndex((tab) => tab.id === activeTab);
