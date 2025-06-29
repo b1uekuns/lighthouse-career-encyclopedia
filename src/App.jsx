@@ -2,10 +2,8 @@ import { useState } from "react";
 import Header from "./components/Header";
 import SearchSection from "./components/SearchSection";
 import SearchResults from "./components/SearchResults";
-import JobResults from "./components/JobResults";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
-import { jobData } from "./data/jobData";
 import { useAuth } from "./context/AuthContext";
 import "./App.css";
 
@@ -18,37 +16,13 @@ function App() {
 
   const handleSearch = (term) => {
     setSearchTerm(term);
-
-    // Special case: graphic designers always show SearchResults component
-    if (term.toLowerCase().includes("graphic designer")) {
-      setCurrentJob(null);
-      setShowLoginRequired(true);
-      return;
-    }
-
-    // Check if we have job data for other search terms
-    const jobInfo = jobData[term.toLowerCase()];
-
-    if (jobInfo) {
-      // Show job results if we have data
-      setCurrentJob(jobInfo);
-      setShowLoginRequired(false);
-    } else {
-      // No data found
-      setCurrentJob(null);
-      setShowLoginRequired(false);
-    }
-  };
-
-  const handleBackToSearch = () => {
     setCurrentJob(null);
-    setSearchTerm("");
-    setShowLoginRequired(false);
+    setShowLoginRequired(true);
   };
 
   const handleHeaderSearch = (term) => {
     // Reset to home page first
-    setCurrentPage('home');
+    setCurrentPage("home");
 
     // Then trigger the same search logic as main search
     handleSearch(term);
@@ -94,12 +68,6 @@ function App() {
           onSignUp={handleSignUp}
           onSignIn={handleSignIn}
           isAuthenticated={isAuthenticated}
-        />
-      ) : currentJob ? (
-        <JobResults
-          jobInfo={currentJob}
-          searchTerm={searchTerm}
-          onBack={handleBackToSearch}
         />
       ) : (
         <SearchSection onSearch={handleSearch} />

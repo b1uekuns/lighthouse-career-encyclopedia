@@ -13,23 +13,35 @@ const Header = ({
 }) => {
   const [localSearchTerm, setLocalSearchTerm] = useState(searchTerm);
   const [category, setCategory] = useState("");
+  const [toast, setToast] = useState("");
 
   // Sync localSearchTerm with searchTerm prop
   useEffect(() => {
     setLocalSearchTerm(searchTerm);
   }, [searchTerm]);
 
+  const availableJobs = [
+    "graphic designer",
+    "accountant",
+    "general doctor",
+    "software tester",
+    "contractor",
+  ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onSearch && localSearchTerm.trim()) {
       const trimmedTerm = localSearchTerm.toLowerCase().trim();
-
-      // Check if the search term is "graphic designer" or contains it
-      if (trimmedTerm.includes("graphic designer")) {
+      const matchedJob = availableJobs.find((job) => trimmedTerm === job);
+      if (matchedJob) {
         onSearch(trimmedTerm);
       } else {
-        // For demo purposes, show an alert for invalid search terms
-        alert("Sorry, we currently only have data for 'graphic designer'. Please try searching for that keyword.");
+        setToast(
+          "Sorry, we currently only have data for: " +
+            availableJobs.map((j) => `'${j}'`).join(", ") +
+            ". Please try searching for one of those keywords."
+        );
+        setTimeout(() => setToast(""), 3500);
       }
     }
   };
@@ -297,6 +309,29 @@ const Header = ({
           )}
         </nav>
       </div>
+      {/* Toast notification */}
+      {toast && (
+        <div
+          style={{
+            position: "fixed",
+            top: "90px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            background: "#dc2626",
+            color: "white",
+            padding: "1rem 2rem",
+            borderRadius: "10px",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.15)",
+            zIndex: 9999,
+            fontSize: "1.05rem",
+            fontWeight: 500,
+            maxWidth: 500,
+            textAlign: "center",
+          }}
+        >
+          {toast}
+        </div>
+      )}
     </header>
   );
 };

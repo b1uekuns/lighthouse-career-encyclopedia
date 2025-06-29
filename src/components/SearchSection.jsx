@@ -4,18 +4,39 @@ const SearchSection = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
 
+  // Available job keywords
+  const availableJobs = [
+    "graphic designer",
+    "accountant",
+    "general doctor",
+    "software tester",
+    "contractor",
+  ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
       const trimmedTerm = searchTerm.toLowerCase().trim();
 
-      // Check if the search term is "graphic designers" or contains it
-      if (trimmedTerm.includes("graphic designer")) {
+      // Check if the search term matches any available job
+      const matchedJob = availableJobs.find((job) => trimmedTerm === job);
+
+      if (matchedJob) {
         setError(""); // Clear any previous error
         onSearch(trimmedTerm);
       } else {
-        // Show error for other search terms
-        setError("Sorry, we currently only have data for 'graphic designer'. Please try searching for that keyword.");
+        // Show error with available options
+        const jobList = availableJobs
+          .map((job) =>
+            job
+              .split(" ")
+              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(" ")
+          )
+          .join(", ");
+        setError(
+          `Sorry, we don't have data for that career. Available careers: ${jobList}`
+        );
       }
     }
   };
@@ -155,8 +176,6 @@ const SearchSection = ({ onSearch }) => {
             {error}
           </div>
         )}
-
-
       </div>
     </section>
   );
