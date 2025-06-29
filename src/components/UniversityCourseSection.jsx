@@ -448,8 +448,8 @@ const UniversityCourseSection = ({ career }) => {
             <div
               style={{
                 background: "transparent",
-                border: "3px dashed #2563eb",
-                color: "#2563eb",
+                border: "3px dashed #fbbf24",
+                color: "#f59e0b",
                 padding: "0.75rem 2rem",
                 borderRadius: "8px",
                 fontSize: "1.1rem",
@@ -675,8 +675,8 @@ const UniversityCourseSection = ({ career }) => {
             <div
               style={{
                 background: "transparent",
-                border: "3px dashed #2563eb",
-                color: "#2563eb",
+                border: "3px dashed #fbbf24",
+                color: "#f59e0b",
                 padding: "0.75rem 2rem",
                 borderRadius: "8px",
                 fontSize: "1.1rem",
@@ -902,8 +902,8 @@ const UniversityCourseSection = ({ career }) => {
             <div
               style={{
                 background: "transparent",
-                border: "3px dashed #2563eb",
-                color: "#2563eb",
+                border: "3px dashed #fbbf24",
+                color: "#f59e0b",
                 padding: "0.75rem 2rem",
                 borderRadius: "8px",
                 fontSize: "1.1rem",
